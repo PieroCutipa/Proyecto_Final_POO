@@ -1,5 +1,5 @@
 # Proyecto_Final_POO
-Proyecto sencillo con React + Vite que muestra contadores en tiempo real para el inicio de clases de universidades.
+
 
 Comandos para iniciar el proyecto:
 
