@@ -5,6 +5,7 @@
 package test;
 
 import java.awt.BorderLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,7 +19,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     public frmPrincipal() {
         initComponents();
         
-        Page1 p1= new Page1();
+        Elecciones p1= new Elecciones();
         p1.setSize(687,511);
         p1.setLocation(0, 0);
         
@@ -38,24 +39,27 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        pageBtn1 = new javax.swing.JButton();
-        pageBtn2 = new javax.swing.JButton();
+        Elecciones = new javax.swing.JButton();
+        Candidatos = new javax.swing.JButton();
         content = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        PartidosPoliticos = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pageBtn1.setText("Pagina1");
-        pageBtn1.addActionListener(new java.awt.event.ActionListener() {
+        Elecciones.setText("Elecciones");
+        Elecciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pageBtn1ActionPerformed(evt);
+                EleccionesActionPerformed(evt);
             }
         });
 
-        pageBtn2.setText("Pagina2");
-        pageBtn2.addActionListener(new java.awt.event.ActionListener() {
+        Candidatos.setText("Candidatos");
+        Candidatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pageBtn2ActionPerformed(evt);
+                CandidatosActionPerformed(evt);
             }
         });
 
@@ -66,37 +70,61 @@ public class frmPrincipal extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 583, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Sistema Electoral");
+
+        PartidosPoliticos.setText("Partidos Politicos");
+        PartidosPoliticos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PartidosPoliticosActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Actas Electorales");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(pageBtn2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pageBtn1)))
-                .addGap(18, 18, 18)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(PartidosPoliticos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Elecciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Candidatos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(pageBtn1)
-                .addGap(18, 18, 18)
-                .addComponent(pageBtn2)
-                .addContainerGap(379, Short.MAX_VALUE))
-            .addComponent(content, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(Elecciones)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Candidatos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PartidosPoliticos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(345, Short.MAX_VALUE))
+            .addComponent(content, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
 
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 510));
@@ -104,33 +132,41 @@ public class frmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pageBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pageBtn1ActionPerformed
+    private void EleccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EleccionesActionPerformed
         // TODO add your handling code here:
-        Page1 p1= new Page1();
-        p1.setSize(687,511);
-        p1.setLocation(0, 0);
-        
-        content.removeAll();
-        content.add(p1,BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
-    }//GEN-LAST:event_pageBtn1ActionPerformed
+        Elecciones p1= new Elecciones();
+        mostrarPanel(p1);
+    }//GEN-LAST:event_EleccionesActionPerformed
 
-    private void pageBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pageBtn2ActionPerformed
+    private void CandidatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CandidatosActionPerformed
         // TODO add your handling code here:
-        Page2 p2= new Page2();
-        p2.setSize(687,511);
-        p2.setLocation(0, 0);
-        
-        content.removeAll();
-        content.add(p2,BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
-    }//GEN-LAST:event_pageBtn2ActionPerformed
+        Candidatos p2= new Candidatos();
+        mostrarPanel(p2);
+    }//GEN-LAST:event_CandidatosActionPerformed
+
+    private void PartidosPoliticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PartidosPoliticosActionPerformed
+        // TODO add your handling code here:
+        PartidosPoliticos p3= new PartidosPoliticos();
+        mostrarPanel(p3);
+    }//GEN-LAST:event_PartidosPoliticosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    public void mostrarPanel(JPanel p){
+        
+        p.setSize(750,520);
+        p.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(p,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();        
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -164,9 +200,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Candidatos;
+    private javax.swing.JButton Elecciones;
+    private javax.swing.JButton PartidosPoliticos;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel content;
-    private javax.swing.JButton pageBtn1;
-    private javax.swing.JButton pageBtn2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

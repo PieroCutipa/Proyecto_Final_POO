@@ -12,9 +12,10 @@ import modelo.*;
 public class GestionMesaElectoral {
     private MesaElectoral[] mesas;
     private int contadorMesas;
+    private final static int MAX=3;
     //Inicializo Atributos
     public GestionMesaElectoral() {
-        mesas = new MesaElectoral[3];
+        mesas = new MesaElectoral[MAX];
         contadorMesas = 0;
     }
     
@@ -28,7 +29,7 @@ public class GestionMesaElectoral {
     
     
     public void agregarMesa(MesaElectoral nuevaMesa) {
-        if (contadorMesas < mesas.length) {
+        if (contadorMesas < MAX) {
             mesas[contadorMesas] = nuevaMesa;
             contadorMesas++;
             System.out.println("Mesa agregada al sistema.");
@@ -46,7 +47,7 @@ public class GestionMesaElectoral {
                 mesas[contadorMesas - 1] = null;
                 contadorMesas--;
                 System.out.println("Mesa eliminada.");
-                return;
+                
             }
         }
         System.out.println("Mesa no encontrada.");
@@ -56,7 +57,7 @@ public class GestionMesaElectoral {
         for (int i = 0; i < contadorMesas; i++) {
             if (mesas[i].getNumeroMesa() == numeroMesa) {
                 mesas[i].AsignarMiembro(miembro);
-                return;
+                
             }
         }
         System.out.println("No se encontró la mesa para asignar");
@@ -66,7 +67,7 @@ public class GestionMesaElectoral {
         if (mesas[i].getNumeroMesa() == numeroBuscado) {
             mesas[i].setNumeroMesa(nuevoNumero);
             System.out.println("Mesa actualizada.");
-            return;
+            
         }
         }
         System.out.println("Mesa no encontrada.");
@@ -81,7 +82,7 @@ public class GestionMesaElectoral {
                     lista[j].setNombres(nuevoNombre);
                     lista[j].setApellidos(nuevoApellido);
                     System.out.println("Miembro modificado.");
-                    return;
+                    
                 }
             }
         }
@@ -98,7 +99,7 @@ public class GestionMesaElectoral {
                     lista[mesas[i].getContador() - 1] = null;
                     mesas[i].setContador(mesas[i].getContador() - 1);
                     System.out.println("Miembro eliminado.");
-                    ;
+                    
                 }
             }
         }
