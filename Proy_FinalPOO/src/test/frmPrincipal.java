@@ -14,6 +14,7 @@ import gestion.*;
  */
 public class frmPrincipal extends javax.swing.JFrame {
     private GestionPartido gestorPartido;
+    private GestionCandidato gestorCandidato;
 
     /**
      * Creates new form frmPrincipal
@@ -21,6 +22,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     public frmPrincipal() {
         initComponents();
         gestorPartido = new GestionPartido();
+        gestorCandidato = new GestionCandidato();
+        
         //Esto lo cambio por un panel de login 
         Elecciones e = new Elecciones();
         mostrarPanel(e);
@@ -131,14 +134,15 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void EleccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EleccionesActionPerformed
         // TODO add your handling code here:
-        Elecciones e= new Elecciones();
+        Elecciones e = new Elecciones();
         mostrarPanel(e);
     }//GEN-LAST:event_EleccionesActionPerformed
 
     private void CandidatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CandidatosActionPerformed
-        // TODO add your handling code here:
-        Candidatos c= new Candidatos();
-        mostrarPanel(c);
+          // TODO add your handling code here:
+        Candidatos objCandidatos = new Candidatos(gestorCandidato,gestorPartido);
+        
+        mostrarPanel(objCandidatos);
     }//GEN-LAST:event_CandidatosActionPerformed
 
     private void PartidosPoliticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PartidosPoliticosActionPerformed

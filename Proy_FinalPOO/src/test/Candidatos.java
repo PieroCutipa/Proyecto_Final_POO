@@ -3,18 +3,53 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package test;
+import modelo.*;
+import gestion.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Average
  */
 public class Candidatos extends javax.swing.JPanel {
+    private GestionCandidato gestionCandidato;
+    private GestionPartido gestionPartido;
+    private DefaultTableModel modeloTabla;
 
     /**
      * Creates new form Page2
      */
     public Candidatos() {
         initComponents();
+        gestionCandidato= new GestionCandidato();
+        gestionPartido= new GestionPartido();
+    }
+    public Candidatos(GestionCandidato gestionCandidato, GestionPartido gestionPartido){
+        initComponents();
+        this.gestionCandidato=gestionCandidato;
+        this.gestionPartido=gestionPartido;
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Nombres");
+        modeloTabla.addColumn("Apellidos");
+        modeloTabla.addColumn("Dni");
+        modeloTabla.addColumn("Partido Politico");
+        
+        taListaCandidatos.setModel(modeloTabla);
+        actualizarTabla();
+    }
+    private void actualizarTabla(){
+        for (int i = 0; i < gestionCandidato.longitud(); i++) {
+            Candidato obj = gestionCandidato.iesimo(i);
+            String[] fila = new String[4];
+            fila[0] = obj.getNombres();
+            fila[1] = obj.getApellidos();
+            fila[2] = obj.getDni();
+            fila[3] = obj.getPartidopolitico().getNombrePartido();
+            modeloTabla.addRow(fila);
+                    
+            
+            
+        }
     }
 
     /**
@@ -28,11 +63,69 @@ public class Candidatos extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taListaCandidatos = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        JtfNombres = new javax.swing.JTextField();
+        JtfApellidos = new javax.swing.JTextField();
+        JtfDNI = new javax.swing.JTextField();
+        JbtnRegistrar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 153));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Gestion de Candidatos");
+        jLabel1.setText("Registrar Candidatos");
+
+        jLabel2.setText("Nombres :");
+
+        jLabel3.setText("Apellidos :");
+
+        jLabel4.setText("DNI :");
+
+        taListaCandidatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(taListaCandidatos);
+
+        jLabel5.setText("Partido Politico :");
+
+        JtfNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfNombresActionPerformed(evt);
+            }
+        });
+
+        JtfApellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfApellidosActionPerformed(evt);
+            }
+        });
+
+        JbtnRegistrar.setText("Registrar");
+        JbtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnRegistrarActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -41,14 +134,58 @@ public class Candidatos extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(502, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addGap(92, 92, 92)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(JtfDNI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                            .addComponent(JtfNombres, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, 0, 108, Short.MAX_VALUE)
+                            .addComponent(JtfApellidos)))
+                    .addComponent(JbtnRegistrar))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(483, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JtfNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JtfApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addComponent(JbtnRegistrar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("Pagina2");
@@ -65,9 +202,47 @@ public class Candidatos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JtfNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfNombresActionPerformed
+
+    private void JtfApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfApellidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfApellidosActionPerformed
+
+    private void JbtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnRegistrarActionPerformed
+        // TODO add your handling code here:
+        String nombres = JtfNombres.getText();
+        String apellidos = JtfApellidos.getText();
+        String dni = JtfDNI.getText();
+        String partidopolitico = //JtfRepresentanteLegal.getText();
+        Candidato objC = new  Candidato(nombres,apellidos,dni,partidopolitico);
+        gestionCandidato.agregar(objC);
+        JtfNombres.setText("");
+        JtfApellidos.setText("");
+        JtfDNI.setText("");
+        
+        actualizarTabla();
+    }//GEN-LAST:event_JbtnRegistrarActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JbtnRegistrar;
+    private javax.swing.JTextField JtfApellidos;
+    private javax.swing.JTextField JtfDNI;
+    private javax.swing.JTextField JtfNombres;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable taListaCandidatos;
     // End of variables declaration//GEN-END:variables
 }

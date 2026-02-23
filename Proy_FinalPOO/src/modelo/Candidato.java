@@ -15,7 +15,7 @@ public class Candidato extends Persona {
     private int votosPreferenciales;
     
 
-    public Candidato(String dni, PartidoPolitico partidopolitico, String nombres, String apellidos) {
+    public Candidato( String nombres, String apellidos,String dni, PartidoPolitico partidopolitico) {
     super(nombres, apellidos);
     this.dni = dni;
     this.partidopolitico = partidopolitico;
