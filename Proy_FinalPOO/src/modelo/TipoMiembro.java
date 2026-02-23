@@ -8,8 +8,9 @@ package modelo;
  *
  * @author Average
  */
-public enum TipoEleccion {
-    Municipal,
-    Nacional,
-    Referendum
+public enum TipoMiembro {
+    Presidente,
+    Secretario,
+    Vocal,
+    
 }
