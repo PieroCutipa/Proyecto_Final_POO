@@ -27,7 +27,6 @@ public class ActaElectoral {
         this.lugar = lugar;
         this.identificacionMesa = identificacionMesa;
         this.selloOficial = selloOficial;
-        
         this.nroActaUnico = nroActaUnico;
         this.resultadoCandidatos = resultadoCandidatos;
         this.cantidadCandidatosRegistrados = cantidadCandidatosRegistrados;
@@ -81,11 +80,6 @@ public class ActaElectoral {
     public void setSelloOficial(String selloOficial) {
         this.selloOficial = selloOficial;
     }
-
-    
-
-   
-
     public String getObservaciones() {
         return Observaciones;
     }
@@ -122,16 +116,8 @@ public class ActaElectoral {
     public String toString() {
         return "ActaElectoral{" + "titulo=" + titulo + ", fecha=" + fecha + ", hora=" + hora + ", lugar=" + lugar + ", identificacionMesa=" + identificacionMesa + ", selloOficial=" + selloOficial + ", Observaciones=" + Observaciones + ", nroActaUnico=" + nroActaUnico + ", candidato=" + candidato + ", resultadoCandidatos=" + resultadoCandidatos + ", cantidadCandidatosRegistrados=" + cantidadCandidatosRegistrados + '}';
     }
-
+    
     
    
    
-    public String toString(MesaElectoral c) {
-        return "ActaElectoral{" + 
-               "nroActa=" + nroActaUnico + 
-               ", identificacionMesa="+ c.getTotalVotosEmitidos() + identificacionMesa + 
-               ", actaValida=" + (esActaValida() ? "SI" : "NO") + 
-               '}';
-    }
-    
-} 
+}
