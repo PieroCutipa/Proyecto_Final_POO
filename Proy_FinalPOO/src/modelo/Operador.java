@@ -10,6 +10,7 @@ public class Operador {
 
     private String usuario;
     private String contraseña;
+    
 
     // Constructor
     public Operador(String usuario, String contraseña) {

@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gestion;
-import modelo.MesaElectoral;import modelo.Candidato;
+import modelo.MesaElectoral;
+import modelo.Candidato;
 public class Reporte {
 
     public void ReportePorMesa(MesaElectoral mesa) {

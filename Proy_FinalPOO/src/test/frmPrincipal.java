@@ -6,27 +6,23 @@ package test;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-
+import gestion.*;
+import modelo.*;
 /**
  *
  * @author Average
  */
 public class frmPrincipal extends javax.swing.JFrame {
+    private GestionPartido partidos; 
 
     /**
      * Creates new form frmPrincipal
      */
     public frmPrincipal() {
         initComponents();
-        
-        Elecciones p1= new Elecciones();
-        p1.setSize(687,511);
-        p1.setLocation(0, 0);
-        
-        content.removeAll();
-        content.add(p1,BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        //Esto lo cambio por un panel de login 
+        Elecciones e= new Elecciones();
+        mostrarPanel(e);
     }
 
     /**
@@ -134,20 +130,20 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void EleccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EleccionesActionPerformed
         // TODO add your handling code here:
-        Elecciones p1= new Elecciones();
-        mostrarPanel(p1);
+        Elecciones e= new Elecciones();
+        mostrarPanel(e);
     }//GEN-LAST:event_EleccionesActionPerformed
 
     private void CandidatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CandidatosActionPerformed
         // TODO add your handling code here:
-        Candidatos p2= new Candidatos();
-        mostrarPanel(p2);
+        Candidatos c= new Candidatos();
+        mostrarPanel(c);
     }//GEN-LAST:event_CandidatosActionPerformed
 
     private void PartidosPoliticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PartidosPoliticosActionPerformed
         // TODO add your handling code here:
-        PartidosPoliticos p3= new PartidosPoliticos();
-        mostrarPanel(p3);
+        PartidosPoliticos p= new PartidosPoliticos();
+        mostrarPanel(p);
     }//GEN-LAST:event_PartidosPoliticosActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

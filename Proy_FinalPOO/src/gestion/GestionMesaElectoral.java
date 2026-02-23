@@ -99,6 +99,7 @@ public class GestionMesaElectoral {
                     lista[mesas[i].getContador() - 1] = null;
                     mesas[i].setContador(mesas[i].getContador() - 1);
                     System.out.println("Miembro eliminado.");
+                    //return;
                     
                 }
             }

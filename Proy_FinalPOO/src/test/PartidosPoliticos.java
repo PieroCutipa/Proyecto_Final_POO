@@ -149,6 +149,11 @@ public class PartidosPoliticos extends javax.swing.JPanel {
 
     private void JbtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnRegistrarActionPerformed
         // TODO add your handling code here:
+        
+        JtfNombrePartido.setText("");
+        JtfLogo.setText("");
+        JtfSiglas.setText("");
+        JtfRepresentanteLegal.setText("");
     }//GEN-LAST:event_JbtnRegistrarActionPerformed
 
     private void JtfNombrePartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfNombrePartidoActionPerformed
