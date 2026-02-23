@@ -9,22 +9,27 @@ package modelo;
  * @author Average
  */
 public class MesaElectoral {
+
     private int NumeroMesa;
-    private MiembrosDeMesa[] miembros ;
+    private MiembrosDeMesa[] miembros;
     private int contador;
-    //Inicializo Atributo p
+
+    private Candidato[] candidatos;
+    private int contadorCandidatos;
+    private int votosNulos;
+    private int votosBlanco;
+
     public MesaElectoral() {
-        NumeroMesa= 0;
+        NumeroMesa = 0;
         miembros = new MiembrosDeMesa[3];
-        contador=0;
+        contador = 0;
+
+        candidatos = new Candidato[10];
+        contadorCandidatos = 0;
+        votosNulos = 0;
+        votosBlanco = 0;
     }
-    //Constructores
-    public MesaElectoral(int NumeroMesa, MiembrosDeMesa[] miembros, int contador) {
-        this.NumeroMesa = NumeroMesa;
-        this.miembros = miembros;
-        this.contador = contador;
-    }
-    //Getters and Setters 
+
     public int getNumeroMesa() {
         return NumeroMesa;
     }
@@ -49,13 +54,68 @@ public class MesaElectoral {
         this.contador = contador;
     }
 
-    //Metodos
+    public Candidato[] getCandidatos() {
+        return candidatos;
+    }
+
+    public int getContadorCandidatos() {
+        return contadorCandidatos;
+    }
+
+    public int getVotosNulos() {
+        return votosNulos;
+    }
+
+    public int getVotosBlanco() {
+        return votosBlanco;
+    }
+
+    public int getTotalVotosEmitidos() {
+
+        int total = votosNulos + votosBlanco;
+
+        for (int i = 0; i < contadorCandidatos; i++) {
+            total = total + candidatos[i].getVotos();
+        }
+        return total;
+    }
+
     public void AsignarMiembro(MiembrosDeMesa m) {
         if (contador < miembros.length) {
-            this.miembros[contador] = m; 
+            miembros[contador] = m;
             contador++;
         } else {
             System.out.println("Mesa llena");
         }
+    }
+
+    public void agregarCandidato(Candidato c) {
+        if (contadorCandidatos < candidatos.length) {
+            candidatos[contadorCandidatos] = c;
+            contadorCandidatos++;
+        } else {
+            System.out.println("No se pueden agregar más candidatos");
+        }
+    }
+
+    public void registrarVoto(String dni) {
+
+        for (int i = 0; i < contadorCandidatos; i++) {
+
+            if (candidatos[i].getDni().equals(dni)) {
+                candidatos[i].sumarVoto();
+                return;
+            }
+        }
+
+        System.out.println("Candidato no encontrado");
+    }
+
+    public void registrarVotoNulo() {
+        votosNulos++;
+    }
+
+    public void registrarVotoBlanco() {
+        votosBlanco++;
     }
 }

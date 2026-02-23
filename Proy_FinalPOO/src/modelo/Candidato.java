@@ -11,6 +11,7 @@ package modelo;
 public class Candidato extends Persona {
     private String dni;
     private PartidoPolitico partidopolitico;
+    private int votos;
 
     public Candidato(String dni, PartidoPolitico partidopolitico, String nombres, String apellidos) {
         super(nombres, apellidos);
@@ -32,6 +33,13 @@ public class Candidato extends Persona {
 
     public void setPartidopolitico(PartidoPolitico partidopolitico) {
         this.partidopolitico = partidopolitico;
+    }
+    public void sumarVoto() {
+    votos++;
+    }
+
+    public int getVotos() {
+    return votos;
     }
 
     @Override
