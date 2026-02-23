@@ -4,6 +4,7 @@ package modelo;
 public class Eleccion {
     private Fecha fecha;
     private TipoEleccion TipoEleccion;
+    private Candidato[] candidatos;
     
 
     public Eleccion(Fecha fecha, TipoEleccion TipoEleccion) {

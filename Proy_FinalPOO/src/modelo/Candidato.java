@@ -12,13 +12,16 @@ public class Candidato extends Persona {
     private String dni;
     private PartidoPolitico partidopolitico;
     private int votos;
+    private int votosPreferenciales;
     
 
     public Candidato(String dni, PartidoPolitico partidopolitico, String nombres, String apellidos) {
-        super(nombres, apellidos);
-        this.dni = dni;
-        this.partidopolitico = partidopolitico;
-    }
+    super(nombres, apellidos);
+    this.dni = dni;
+    this.partidopolitico = partidopolitico;
+    this.votos = 0;
+    this.votosPreferenciales = 0;
+}
 
     public String getDni() {
         return dni;
@@ -41,6 +44,13 @@ public class Candidato extends Persona {
     
     public int getVotos() {
     return votos;
+    }
+    public void sumarVotoPreferencial() {
+        votosPreferenciales++;
+    }
+
+    public int getVotosPreferenciales() {
+        return votosPreferenciales;
     }
 
     @Override
