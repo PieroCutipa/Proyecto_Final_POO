@@ -10,12 +10,12 @@ package modelo;
  */
 public class Candidato extends Persona {
     private String dni;
-    private PartidoPolitico partidopolitico;
+    private String partidopolitico;
     private int votos;
     private int votosPreferenciales;
     
 
-    public Candidato( String nombres, String apellidos,String dni, PartidoPolitico partidopolitico) {
+    public Candidato( String nombres, String apellidos,String dni, String partidopolitico) {
     super(nombres, apellidos);
     this.dni = dni;
     this.partidopolitico = partidopolitico;
@@ -31,11 +31,11 @@ public class Candidato extends Persona {
         this.dni = dni;
     }
 
-    public PartidoPolitico getPartidopolitico() {
+    public String getPartidopolitico() {
         return partidopolitico;
     }
 
-    public void setPartidopolitico(PartidoPolitico partidopolitico) {
+    public void setPartidopolitico(String partidopolitico) {
         this.partidopolitico = partidopolitico;
     }
     public void sumarVoto() {

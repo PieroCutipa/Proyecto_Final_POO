@@ -62,6 +62,11 @@ public class PartidoPolitico {
 
     @Override
     public String toString() {
+        return getNombrePartido();
+    }
+
+    
+    public String mostrarDatos() {
         return "PartidoPolitico{" 
                 + "nombrePartido=" + nombrePartido 
                 + ", sigla=" + sigla 

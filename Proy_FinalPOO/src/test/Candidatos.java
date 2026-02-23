@@ -35,6 +35,7 @@ public class Candidatos extends javax.swing.JPanel {
         modeloTabla.addColumn("Partido Politico");
         
         taListaCandidatos.setModel(modeloTabla);
+        cargarPartidosEnCombo();
         actualizarTabla();
     }
     private void actualizarTabla(){
@@ -44,12 +45,17 @@ public class Candidatos extends javax.swing.JPanel {
             fila[0] = obj.getNombres();
             fila[1] = obj.getApellidos();
             fila[2] = obj.getDni();
-            fila[3] = obj.getPartidopolitico().getNombrePartido();
-            modeloTabla.addRow(fila);
-                    
-            
-            
+            fila[3] = obj.getPartidopolitico();
+            modeloTabla.addRow(fila);           
         }
+    }
+    private void cargarPartidosEnCombo() {
+        jComboBox1.removeAllItems(); 
+        for (int i = 0; i < gestionPartido.longitud(); i++) {
+            PartidoPolitico partido = gestionPartido.iesimo(i);
+            jComboBox1.addItem(partido.getNombrePartido()); // agrega el objeto completo
+        
+        }    
     }
 
     /**
@@ -146,17 +152,17 @@ public class Candidatos extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)))
+                    .addComponent(JbtnRegistrar)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(JtfDNI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                             .addComponent(JtfNombres, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(51, 51, 51)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, 108, Short.MAX_VALUE)
-                            .addComponent(JtfApellidos)))
-                    .addComponent(JbtnRegistrar))
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox1, 0, 121, Short.MAX_VALUE)
+                            .addComponent(JtfApellidos))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -184,8 +190,8 @@ public class Candidatos extends javax.swing.JPanel {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addComponent(JbtnRegistrar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("Pagina2");
@@ -215,7 +221,7 @@ public class Candidatos extends javax.swing.JPanel {
         String nombres = JtfNombres.getText();
         String apellidos = JtfApellidos.getText();
         String dni = JtfDNI.getText();
-        String partidopolitico = //JtfRepresentanteLegal.getText();
+        String partidopolitico = (String) jComboBox1.getSelectedItem();
         Candidato objC = new  Candidato(nombres,apellidos,dni,partidopolitico);
         gestionCandidato.agregar(objC);
         JtfNombres.setText("");

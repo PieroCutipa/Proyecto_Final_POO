@@ -93,14 +93,12 @@ public class PartidosPoliticos extends javax.swing.JPanel {
             }
         });
 
-        JtfNombrePartido.setText("nombre del partido...");
         JtfNombrePartido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JtfNombrePartidoActionPerformed(evt);
             }
         });
 
-        JtfSiglas.setText("siglas....");
         JtfSiglas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JtfSiglasActionPerformed(evt);
@@ -113,11 +111,8 @@ public class PartidosPoliticos extends javax.swing.JPanel {
 
         JlRepresentanteLegal.setText("Representante Legal: ");
 
-        JtfRepresentanteLegal.setText("Representante");
-
         JlLogo.setText("Logo :  ");
 
-        JtfLogo.setText("logo...");
         JtfLogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JtfLogoActionPerformed(evt);

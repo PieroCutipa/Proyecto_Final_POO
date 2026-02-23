@@ -122,17 +122,11 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="JtfNombrePartido">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="nombre del partido..."/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JtfNombrePartidoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="JtfSiglas">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="siglas...."/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JtfSiglasActionPerformed"/>
           </Events>
@@ -153,9 +147,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="JtfRepresentanteLegal">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Representante"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="JlLogo">
           <Properties>
@@ -163,9 +154,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="JtfLogo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="logo..."/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JtfLogoActionPerformed"/>
           </Events>
