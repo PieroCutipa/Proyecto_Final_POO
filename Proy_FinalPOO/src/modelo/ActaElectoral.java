@@ -89,15 +89,9 @@ public class ActaElectoral {
     public void setNroActaUnico(String nroActaUnico) {
         this.nroActaUnico = nroActaUnico;
     }
-
-    
-   
     @Override
     public String toString() {
         return "ActaElectoral{" + "titulo=" + titulo + ", fecha=" + fecha + ", hora=" + hora + ", lugar=" + lugar + ", selloOficial=" + selloOficial + ", Observaciones=" + observaciones + ", nroActaUnico=" + nroActaUnico  + '}';
     }
-    
-    
-   
    
 }

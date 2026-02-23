@@ -68,8 +68,4 @@ public class PartidoPolitico {
                 + ", logo=" + logo 
                 + ", representanteLegal=" + representanteLegal + '}';
     }
-    
-    
-    
-    
 }

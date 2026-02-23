@@ -57,8 +57,5 @@ public class Candidato extends Persona {
     public String toString() {
         return "Candidato{" + "dni=" + dni + ", partidopolitico=" + partidopolitico + '}';
     }
-
-    
-    
     
 }
