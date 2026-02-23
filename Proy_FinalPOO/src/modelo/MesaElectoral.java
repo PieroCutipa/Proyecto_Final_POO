@@ -95,11 +95,11 @@ public class MesaElectoral {
             contadorCandidatos++;
         } else {
             System.out.println("No se pueden agregar más candidatos");
-        }
+}
     }
 
     public void registrarVoto(String dni) {
-
+    
         for (int i = 0; i < contadorCandidatos; i++) {
 
             if (candidatos[i].getDni().equals(dni)) {
@@ -107,14 +107,14 @@ public class MesaElectoral {
                 return;
             }
         }
-
+    
         System.out.println("Candidato no encontrado");
     }
 
     public void registrarVotoNulo() {
         votosNulos++;
     }
-
+   
     public void registrarVotoBlanco() {
         votosBlanco++;
     }

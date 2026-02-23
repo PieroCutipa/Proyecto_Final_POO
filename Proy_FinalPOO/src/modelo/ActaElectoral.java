@@ -10,24 +10,16 @@ public class ActaElectoral {
     private String lugar;
     private String identificacionMesa;
     private String selloOficial;
-    private int nroVotantes;
-    private int votosBlancos;
-    private int votosNulos;
+    
     private String Observaciones;
     private String nroActaUnico;
+    private Candidato[] candidato;
     
     // --- AQUÍ ESTÁ LA CORRECCIÓN CLAVE ---
     // Reemplazamos el String por un Arreglo de Objetos (Obligatorio para tu rúbrica)
     private RegistroVoto[] resultadoCandidatos;
     private int cantidadCandidatosRegistrados; // Contador para saber cuántos vamos guardando
-    public ActaElectoral(){
-       votosBlancos=0;
-       votosNulos=0;
-       Observaciones="sin observaciones";
-       resultadoCandidatos=new RegistroVoto[20];
-       cantidadCandidatosRegistrados=0;
-    }
-
+   
     public ActaElectoral(String titulo, Fecha fecha, double hora, String lugar, String identificacionMesa, String selloOficial, int nroVotantes, int votosBlancos, int votosNulos, String Obersvaciones, String nroActaUnico, RegistroVoto[] resultadoCandidatos, int cantidadCandidatosRegistrados) {
         this.titulo = titulo;
         this.fecha = fecha;
@@ -35,10 +27,7 @@ public class ActaElectoral {
         this.lugar = lugar;
         this.identificacionMesa = identificacionMesa;
         this.selloOficial = selloOficial;
-        this.nroVotantes = nroVotantes;
-        this.votosBlancos = votosBlancos;
-        this.votosNulos = votosNulos;
-        this.Observaciones = Observaciones;
+        
         this.nroActaUnico = nroActaUnico;
         this.resultadoCandidatos = resultadoCandidatos;
         this.cantidadCandidatosRegistrados = cantidadCandidatosRegistrados;
@@ -93,29 +82,9 @@ public class ActaElectoral {
         this.selloOficial = selloOficial;
     }
 
-    public int getNroVotantes() {
-        return nroVotantes;
-    }
+    
 
-    public void setNroVotantes(int nroVotantes) {
-        this.nroVotantes = nroVotantes;
-    }
-
-    public int getVotosBlancos() {
-        return votosBlancos;
-    }
-
-    public void setVotosBlancos(int votosBlancos) {
-        this.votosBlancos = votosBlancos;
-    }
-
-    public int getVotosNulos() {
-        return votosNulos;
-    }
-
-    public void setVotosNulos(int votosNulos) {
-        this.votosNulos = votosNulos;
-    }
+   
 
     public String getObservaciones() {
         return Observaciones;
@@ -148,65 +117,19 @@ public class ActaElectoral {
     public void setCantidadCandidatosRegistrados(int cantidadCandidatosRegistrados) {
         this.cantidadCandidatosRegistrados = cantidadCandidatosRegistrados;
     }
-    //personas que votaron en mesa
-    public int calcularVotosEfectivos(){
-        int total=0;
-        for (int i = 0; i < cantidadCandidatosRegistrados; i++) {
-            total=total+resultadoCandidatos[i].getVotosTotalesCandidato();          
-        }
-        total=total+votosBlancos+votosNulos;
-        return total;
-    }
-    // Validación estricta de seguridad del documento físico (Versión Clásica)
-    public boolean esActaValida() {
-        // validacion
-        if (nroActaUnico == null || nroActaUnico.equals("")) {
-            System.out.println("Error: El acta no tiene un número de serie.");
-            return false;
-        }
-        
-        //validar si se puso el sello oficial
-        if (selloOficial == null || selloOficial.equalsIgnoreCase("NO") || selloOficial.equals("")) {
-            System.out.println("Alerta de Seguridad: El acta no es válida porque no tiene el Sello Oficial.");
-            return false; 
-        }
-        
-        return true;
-    }
-    public void agregarRegistroVoto(RegistroVoto registro){
-        if(cantidadCandidatosRegistrados<resultadoCandidatos.length){
-                resultadoCandidatos[cantidadCandidatosRegistrados]=registro;
-                cantidadCandidatosRegistrados++;
-        }else{
-            System.out.println("Error: Cantidad de candidatos superado");
-        }
-    }
-   public void corregirVotosDeCandidato(String dniCandidato, int nuevosVotos, int nuevosPreferenciales) {
-        boolean encontrado = false;
-        for (int i = 0; i < cantidadCandidatosRegistrados; i++) {
-            if (resultadoCandidatos[i].getCandidato().getDni().equals(dniCandidato)) {
-                resultadoCandidatos[i].setVotosTotalesCandidato(nuevosVotos);
-                resultadoCandidatos[i].setVotosPreferenciales(nuevosPreferenciales);
-                encontrado = true;
-                System.out.println("Éxito: Se corrigieron los votos del candidato con DNI " + dniCandidato);
-                break;
-            }
-        }
-        if (!encontrado) {
-            System.out.println("Error: No se encontró al candidato en esta acta.");
-        }
+   
+    @Override
+    public String toString() {
+        return "ActaElectoral{" + "titulo=" + titulo + ", fecha=" + fecha + ", hora=" + hora + ", lugar=" + lugar + ", identificacionMesa=" + identificacionMesa + ", selloOficial=" + selloOficial + ", Observaciones=" + Observaciones + ", nroActaUnico=" + nroActaUnico + ", candidato=" + candidato + ", resultadoCandidatos=" + resultadoCandidatos + ", cantidadCandidatosRegistrados=" + cantidadCandidatosRegistrados + '}';
     }
 
     
-    public String mostrarDatos() {
-        return "ActaElectoral{" + "titulo=" + titulo + ", fecha=" + fecha + ", hora=" + hora + ", lugar=" + lugar + ", identificacionMesa=" + identificacionMesa + ", selloOficial=" + selloOficial + ", nroVotantes=" + nroVotantes + ", votosBlancos=" + votosBlancos + ", votosNulos=" + votosNulos + ", Observaciones=" + Observaciones + ", nroActaUnico=" + nroActaUnico + ", resultadoCandidatos=" + resultadoCandidatos + ", cantidadCandidatosRegistrados=" + cantidadCandidatosRegistrados + '}';
-    }
-    @Override
-    public String toString() {
+   
+   
+    public String toString(MesaElectoral c) {
         return "ActaElectoral{" + 
                "nroActa=" + nroActaUnico + 
-               ", identificacionMesa=" + identificacionMesa + 
-               ", votosEfectivos=" + calcularVotosEfectivos() + 
+               ", identificacionMesa="+ c.getTotalVotosEmitidos() + identificacionMesa + 
                ", actaValida=" + (esActaValida() ? "SI" : "NO") + 
                '}';
     }
