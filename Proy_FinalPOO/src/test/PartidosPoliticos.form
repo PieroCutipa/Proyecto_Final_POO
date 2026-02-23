@@ -45,18 +45,25 @@
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="JtfNombrePartido" min="-2" pref="127" max="-2" attributes="0"/>
-                              <Component id="JlNombrePartido" min="-2" max="-2" attributes="0"/>
-                              <Component id="JlLogo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="JtfLogo" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="JtfNombrePartido" min="-2" pref="127" max="-2" attributes="0"/>
+                                      <Component id="JlNombrePartido" min="-2" max="-2" attributes="0"/>
+                                      <Component id="JlLogo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="JtfLogo" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="JlRepresentanteLegal" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="JtfRepresentanteLegal" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="JlSiglas" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                              <Component id="JtfSiglas" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="JlSiglas" alignment="0" pref="127" max="32767" attributes="0"/>
+                              <Component id="JtfSiglas" alignment="0" pref="127" max="32767" attributes="0"/>
+                              <Component id="JtfRepresentanteLegal" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="JbtnRegistrar" min="-2" pref="127" max="-2" attributes="0"/>
