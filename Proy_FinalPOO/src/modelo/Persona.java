@@ -10,8 +10,8 @@ package modelo;
  */
 public class Persona {
     //Atributos-------------
-    public String nombres;
-    public String apellidos;
+    private String nombres;
+    private String apellidos;
     //Constructores
 
     public Persona() {

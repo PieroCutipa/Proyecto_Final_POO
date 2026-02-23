@@ -56,19 +56,18 @@ public class GestionMesaElectoral {
     public void asignarMiembroAMesa(int numeroMesa, MiembrosDeMesa miembro) {
         for (int i = 0; i < contadorMesas; i++) {
             if (mesas[i].getNumeroMesa() == numeroMesa) {
-                mesas[i].AsignarMiembro(miembro);
-                
+                mesas[i].AsignarMiembro(miembro);                
             }
         }
         System.out.println("No se encontró la mesa para asignar");
     }
     public void modificarMesa(int numeroBuscado, int nuevoNumero) {
         for (int i = 0; i < contadorMesas; i++) {
-        if (mesas[i].getNumeroMesa() == numeroBuscado) {
+            if (mesas[i].getNumeroMesa() == numeroBuscado) {
             mesas[i].setNumeroMesa(nuevoNumero);
-            System.out.println("Mesa actualizada.");
-            
-        }
+            System.out.println("Mesa actualizada.");            
+            }
+        
         }
         System.out.println("Mesa no encontrada.");
     
@@ -82,6 +81,7 @@ public class GestionMesaElectoral {
                     lista[j].setNombres(nuevoNombre);
                     lista[j].setApellidos(nuevoApellido);
                     System.out.println("Miembro modificado.");
+                    return;
                     
                 }
             }
@@ -99,7 +99,7 @@ public class GestionMesaElectoral {
                     lista[mesas[i].getContador() - 1] = null;
                     mesas[i].setContador(mesas[i].getContador() - 1);
                     System.out.println("Miembro eliminado.");
-                    //return;
+                    return;
                     
                 }
             }

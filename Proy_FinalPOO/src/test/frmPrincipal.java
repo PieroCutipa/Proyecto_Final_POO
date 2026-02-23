@@ -7,21 +7,22 @@ package test;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import gestion.*;
-import modelo.*;
+
 /**
  *
  * @author Average
  */
 public class frmPrincipal extends javax.swing.JFrame {
-    private GestionPartido partidos; 
+    private GestionPartido gestorPartido;
 
     /**
      * Creates new form frmPrincipal
      */
     public frmPrincipal() {
         initComponents();
+        gestorPartido = new GestionPartido();
         //Esto lo cambio por un panel de login 
-        Elecciones e= new Elecciones();
+        Elecciones e = new Elecciones();
         mostrarPanel(e);
     }
 
@@ -40,7 +41,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         content = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PartidosPoliticos = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ActasElectorales = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,10 +84,10 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Actas Electorales");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ActasElectorales.setText("Actas Electorales");
+        ActasElectorales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ActasElectoralesActionPerformed(evt);
             }
         });
 
@@ -99,7 +100,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ActasElectorales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PartidosPoliticos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Elecciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Candidatos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -118,7 +119,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PartidosPoliticos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(ActasElectorales)
                 .addContainerGap(345, Short.MAX_VALUE))
             .addComponent(content, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
@@ -142,13 +143,18 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void PartidosPoliticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PartidosPoliticosActionPerformed
         // TODO add your handling code here:
-        PartidosPoliticos p= new PartidosPoliticos();
-        mostrarPanel(p);
+        
+        PartidosPoliticos objPartidosPoliticos= new PartidosPoliticos(gestorPartido);
+        
+        mostrarPanel(objPartidosPoliticos);
+        
     }//GEN-LAST:event_PartidosPoliticosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ActasElectoralesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActasElectoralesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ActasElectorales a= new ActasElectorales();
+        mostrarPanel(a);
+    }//GEN-LAST:event_ActasElectoralesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,12 +202,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ActasElectorales;
     private javax.swing.JButton Candidatos;
     private javax.swing.JButton Elecciones;
     private javax.swing.JButton PartidosPoliticos;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel content;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
