@@ -4,10 +4,7 @@
  */
 package modelo;
 
-/**
- *
- * @author Average
- */
+import modelo.*;
 public class MesaElectoral {
 
     private int NumeroMesa;
@@ -18,7 +15,7 @@ public class MesaElectoral {
     private int contadorCandidatos;
     private int votosNulos;
     private int votosBlanco;
-
+    
     public MesaElectoral() {
         NumeroMesa = 0;
         miembros = new MiembrosDeMesa[3];
@@ -69,6 +66,16 @@ public class MesaElectoral {
     public int getVotosBlanco() {
         return votosBlanco;
     }
+    
+    public void registrarVotoPreferencial(String dni) {
+    for (int i = 0; i < contadorCandidatos; i++) {
+        if (candidatos[i].getDni().equals(dni)) {
+            candidatos[i].sumarVotoPreferencial();
+            return;
+            }
+        }
+        System.out.println("Candidato no encontrado");
+    }
 
     public int getTotalVotosEmitidos() {
 
@@ -95,11 +102,11 @@ public class MesaElectoral {
             contadorCandidatos++;
         } else {
             System.out.println("No se pueden agregar más candidatos");
-        }
+}
     }
 
     public void registrarVoto(String dni) {
-
+    
         for (int i = 0; i < contadorCandidatos; i++) {
 
             if (candidatos[i].getDni().equals(dni)) {
@@ -107,14 +114,14 @@ public class MesaElectoral {
                 return;
             }
         }
-
+    
         System.out.println("Candidato no encontrado");
     }
 
     public void registrarVotoNulo() {
         votosNulos++;
     }
-
+   
     public void registrarVotoBlanco() {
         votosBlanco++;
     }
