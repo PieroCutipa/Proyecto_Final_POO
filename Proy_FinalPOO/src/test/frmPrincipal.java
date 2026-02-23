@@ -134,8 +134,8 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void EleccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EleccionesActionPerformed
         // TODO add your handling code here:
-        Elecciones p1= new Elecciones();
-        mostrarPanel(p1);
+        Loginfarm L=new Loginfarm();
+        mostrarPanel(L);
     }//GEN-LAST:event_EleccionesActionPerformed
 
     private void CandidatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CandidatosActionPerformed

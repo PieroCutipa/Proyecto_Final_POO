@@ -8,31 +8,19 @@ import modelo.Operador;
 
 public class Autenticacion {
 
-    private Operador[] operadores;
-    private int contador;
+    private Operador operador; 
 
     public Autenticacion() {
-        operadores = new Operador[5];
-        contador = 0;
-        operadores[contador++] = new Operador("admin", "1234");
+        
+        operador = new Operador("admin", "1234");
     }
 
-    public void agregarOperador(Operador op) {
-        if (contador < operadores.length) {
-            operadores[contador++] = op;
-        } else {
-            System.out.println("No se pueden agregar más operadores");
-        }
-    }
     public boolean login(String usuario, String contraseña) {
-
-        for (int i = 0; i < contador; i++) {
-            if (operadores[i].getUsuario().equals(usuario) &&
-                operadores[i].getContraseña().equals(contraseña)) {
-                return true;
-            }
+        
+        if (operador.getUsuario().equals(usuario) &&
+            operador.getContraseña().equals(contraseña)) {
+            return true;
         }
-
         return false;
     }
 }
