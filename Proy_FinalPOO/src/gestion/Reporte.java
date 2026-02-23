@@ -14,7 +14,7 @@ public class Reporte {
         
         for (int i = 0; i < mesa.getContadorCandidatos(); i++) {
             Candidato c = mesa.getCandidatos()[i];
-            System.out.println(c.getNombres() + " " +c.getApellidos() +" Votos: " +c.getVotos());
+            System.out.println(c.getNombres() + " " +c.getApellidos() +" Votos: " +c.getVotos()+ "Preferenciales: " + c.getVotosPreferenciales());
         }
         System.out.println("Votos nulos: " + mesa.getVotosNulos());
         System.out.println("Votos en blanco: " + mesa.getVotosBlanco());

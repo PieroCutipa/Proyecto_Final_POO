@@ -33,12 +33,5 @@ public class Eleccion {
     public String toString() {
         return "Eleccion{" + "fecha=" + fecha + ", TipoEleccion=" + TipoEleccion + '}';
     }
-    
-
-    
-
-    
-    
-    
         
 }
