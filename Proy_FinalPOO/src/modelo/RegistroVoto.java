@@ -43,8 +43,8 @@ public class RegistroVoto {
     
     //suma de votos
     public void registrarVotos(int votos,int preferenciales){
-        this.votosTotalesCandidato=votosTotalesCandidato+votos;
-        this.votosPreferenciales=votosPreferenciales+preferenciales;
+        votosTotalesCandidato=votosTotalesCandidato+votos;
+        votosPreferenciales=votosPreferenciales+preferenciales;
     }
     public void corregirVotos(int votosCorrectos, int preferencialesCorrectos){
         this.votosTotalesCandidato = votosCorrectos;
