@@ -27,7 +27,7 @@ public class ReportedeCandidato extends javax.swing.JPanel {
     }
 
     private void cargarReporte() {
-        modeloTabla.setRowCount(0); // limpiar tabla
+        modeloTabla.setRowCount(0); 
 
         for (int i = 0; i < gestionCandidato.longitud(); i++) {
             Candidato c = gestionCandidato.iesimo(i);

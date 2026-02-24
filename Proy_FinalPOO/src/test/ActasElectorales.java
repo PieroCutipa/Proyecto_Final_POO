@@ -4,7 +4,7 @@
  */
 package test;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import modelo.*;
 
 public class ActasElectorales extends javax.swing.JPanel {
