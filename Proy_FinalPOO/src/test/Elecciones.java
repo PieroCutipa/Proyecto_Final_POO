@@ -246,28 +246,35 @@ public class Elecciones extends javax.swing.JPanel {
     private void JbtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnRegistrarActionPerformed
         // TODO add your handling code here:
         
-            int dia = Integer.parseInt(JtfDia.getText().trim());
-            int mes = Integer.parseInt(JtfMes.getText().trim());
-            int anio = Integer.parseInt(JtfAño.getText().trim());
+        
+        int pos = taListaElecciones.getSelectedRow();
+      
+        int dia = Integer.parseInt(JtfDia.getText().trim());
+        int mes = Integer.parseInt(JtfMes.getText().trim());
+        int anio = Integer.parseInt(JtfAño.getText().trim());
+      
+        String tipoTexto = (String) jComboBox1.getSelectedItem();
+        TipoEleccion tipo = TipoEleccion.valueOf(tipoTexto);
 
-            String tipoTexto = (String) jComboBox1.getSelectedItem();            
-
-            TipoEleccion tipo = TipoEleccion.valueOf(tipoTexto); // si tu enum está en MAYÚSCULAS
-            Fecha fecha = new Fecha(dia, mes, anio);
-
-            Eleccion objE = new Eleccion(fecha, tipo);
-            gestionEleccion.agregar(objE);
-
-            JtfDia.setText("");
-            JtfMes.setText("");
-            JtfAño.setText("");
-
-            actualizarTabla();
+        Fecha fecha = new Fecha(dia, mes, anio);
+        Eleccion objE = new Eleccion(fecha, tipo);
+      
+        gestionEleccion.eliminar(pos); // elimina la fila seleccionada
+        gestionEleccion.agregar(objE); // agrega al final
+      
+        JtfDia.setText("");
+        JtfMes.setText("");
+        JtfAño.setText("");
+      
+        actualizarTabla();
         
     }//GEN-LAST:event_JbtnRegistrarActionPerformed
 
     private void JbtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnEliminarActionPerformed
         // TODO add your handling code here:
+        int pos = taListaElecciones.getSelectedRow();
+        gestionEleccion.eliminar(pos);
+        actualizarTabla();
     }//GEN-LAST:event_JbtnEliminarActionPerformed
 
 
