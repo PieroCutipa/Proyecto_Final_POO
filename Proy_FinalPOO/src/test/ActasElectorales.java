@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package test;
-
+import modelo.MesaElectoral;
 /**
  *
  * @author Average
  */
 public class ActasElectorales extends javax.swing.JPanel {
-
+    private MesaElectoral mesaActual = new MesaElectoral();
     /**
      * Creates new form ActasElectorales
      */
@@ -26,6 +26,9 @@ public class ActasElectorales extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         JINumeroActa = new javax.swing.JLabel();
@@ -37,9 +40,33 @@ public class ActasElectorales extends javax.swing.JPanel {
         JtfFecha = new javax.swing.JTextField();
         JtfHora = new javax.swing.JTextField();
         JINumeroMesa = new javax.swing.JLabel();
-        jNumeroMesa = new javax.swing.JComboBox<>();
         JILugar = new javax.swing.JLabel();
         JtfLugar = new javax.swing.JTextField();
+        JIVotosNulos = new javax.swing.JLabel();
+        JIVotosBlancos = new javax.swing.JLabel();
+        JtfVotosBlancos = new javax.swing.JTextField();
+        btnRegistrar = new javax.swing.JButton();
+        JtfNumeroMesa = new javax.swing.JTextField();
+        JtfVotosNulos = new javax.swing.JTextField();
+        JIVotosPreferenciales = new javax.swing.JLabel();
+        JtfVotosPreferenciales = new javax.swing.JTextField();
+        JtfTotalVotos = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setText("jLabel2");
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -54,6 +81,11 @@ public class ActasElectorales extends javax.swing.JPanel {
         JIHora.setText("Hora:");
 
         JtfNumeroActa.setText("numero acta unico");
+        JtfNumeroActa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfNumeroActaActionPerformed(evt);
+            }
+        });
 
         JtfTitulo.setText("titulo");
         JtfTitulo.addActionListener(new java.awt.event.ActionListener() {
@@ -63,33 +95,78 @@ public class ActasElectorales extends javax.swing.JPanel {
         });
 
         JtfFecha.setText("Fecha");
-
-        JtfHora.setText("Hora");
-
-        JINumeroMesa.setText("Numero de mesa:");
-
-        jNumeroMesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jNumeroMesa.addActionListener(new java.awt.event.ActionListener() {
+        JtfFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jNumeroMesaActionPerformed(evt);
+                JtfFechaActionPerformed(evt);
             }
         });
+
+        JtfHora.setText("Hora");
+        JtfHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfHoraActionPerformed(evt);
+            }
+        });
+
+        JINumeroMesa.setText("Numero de mesa:");
 
         JILugar.setText("Lugar:");
 
         JtfLugar.setText("lugar");
+        JtfLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfLugarActionPerformed(evt);
+            }
+        });
+
+        JIVotosNulos.setText("Votos Nulos:");
+
+        JIVotosBlancos.setText("Votos Blancos:");
+
+        JtfVotosBlancos.setText("votos blancos");
+        JtfVotosBlancos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfVotosBlancosActionPerformed(evt);
+            }
+        });
+
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        JtfNumeroMesa.setText("Numero mesa");
+        JtfNumeroMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfNumeroMesaActionPerformed(evt);
+            }
+        });
+
+        JtfVotosNulos.setText("Votos nulos");
+        JtfVotosNulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfVotosNulosActionPerformed(evt);
+            }
+        });
+
+        JIVotosPreferenciales.setText("Votos Preferenciales:");
+
+        JtfVotosPreferenciales.setText("votos preferenciales");
+
+        JtfTotalVotos.setEditable(false);
+
+        jLabel3.setText("Votos Totales:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(261, 261, 261)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JINumeroActa)
                             .addComponent(JITitulo)
@@ -99,14 +176,36 @@ public class ActasElectorales extends javax.swing.JPanel {
                                 .addComponent(JIFecha))
                             .addComponent(JtfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JtfHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JtfNumeroActa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JILugar)
+                            .addComponent(JtfLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(JINumeroMesa))
-                            .addComponent(jNumeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JILugar)
-                            .addComponent(JtfLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(375, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JtfNumeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JINumeroMesa))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(214, 214, 214)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JtfVotosBlancos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JIVotosBlancos)
+                                    .addComponent(JIVotosPreferenciales)
+                                    .addComponent(JtfVotosPreferenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JtfTotalVotos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(221, 221, 221)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JtfVotosNulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JIVotosNulos)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(btnRegistrar))))
+                    .addComponent(JtfNumeroActa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,28 +215,51 @@ public class ActasElectorales extends javax.swing.JPanel {
                 .addGap(11, 11, 11)
                 .addComponent(JINumeroActa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtfNumeroActa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(JITitulo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(JtfNumeroActa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addComponent(JITitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JIVotosBlancos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JIFecha)
+                            .addComponent(JtfVotosBlancos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addComponent(JtfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JIHora)
+                            .addComponent(JIVotosPreferenciales))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JtfHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JtfVotosPreferenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(JIVotosNulos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JtfVotosNulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JIFecha)
-                .addGap(2, 2, 2)
-                .addComponent(JtfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JIHora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtfHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JINumeroMesa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jNumeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JILugar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtfLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(JINumeroMesa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JtfNumeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JILugar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JtfLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistrar)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JtfTotalVotos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -162,9 +284,52 @@ public class ActasElectorales extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_JtfTituloActionPerformed
 
-    private void jNumeroMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNumeroMesaActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jNumeroMesaActionPerformed
+        String textoNulos=JtfVotosNulos.getText();
+        String textoBlancos=JtfVotosBlancos.getText();
+        
+        int nulos=Integer.parseInt(textoNulos);
+        int blancos=Integer.parseInt(textoBlancos);
+        
+        int totalPref=mesaActual.getTotalVotosPreferenciales();
+        int totalE=mesaActual.getTotalVotosEmitidos();
+        
+        JtfVotosPreferenciales.setText(String.valueOf(totalPref));
+        JtfTotalVotos.setText(String.valueOf(totalE));
+        
+        
+        
+        
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void JtfNumeroMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfNumeroMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfNumeroMesaActionPerformed
+
+    private void JtfHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfHoraActionPerformed
+
+    private void JtfNumeroActaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfNumeroActaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfNumeroActaActionPerformed
+
+    private void JtfFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfFechaActionPerformed
+
+    private void JtfLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfLugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfLugarActionPerformed
+
+    private void JtfVotosBlancosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfVotosBlancosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfVotosBlancosActionPerformed
+
+    private void JtfVotosNulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfVotosNulosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfVotosNulosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -174,13 +339,25 @@ public class ActasElectorales extends javax.swing.JPanel {
     private javax.swing.JLabel JINumeroActa;
     private javax.swing.JLabel JINumeroMesa;
     private javax.swing.JLabel JITitulo;
+    private javax.swing.JLabel JIVotosBlancos;
+    private javax.swing.JLabel JIVotosNulos;
+    private javax.swing.JLabel JIVotosPreferenciales;
     private javax.swing.JTextField JtfFecha;
     private javax.swing.JTextField JtfHora;
     private javax.swing.JTextField JtfLugar;
     private javax.swing.JTextField JtfNumeroActa;
+    private javax.swing.JTextField JtfNumeroMesa;
     private javax.swing.JTextField JtfTitulo;
+    private javax.swing.JTextField JtfTotalVotos;
+    private javax.swing.JTextField JtfVotosBlancos;
+    private javax.swing.JTextField JtfVotosNulos;
+    private javax.swing.JTextField JtfVotosPreferenciales;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JComboBox<String> jNumeroMesa;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
