@@ -3,19 +3,58 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package test;
-
+import modelo.*;
+import gestion.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Average
  */
 public class Elecciones extends javax.swing.JPanel {
+    private GestionEleccion gestionEleccion;
+    private DefaultTableModel modeloTabla;
 
     /**
      * Creates new form Page1
      */
     public Elecciones() {
         initComponents();
+        gestionEleccion = new GestionEleccion();
     }
+    public Elecciones(GestionEleccion gestionEleccion){
+        initComponents();
+        this.gestionEleccion=gestionEleccion;
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Fecha");
+        modeloTabla.addColumn("Tipo de eleccion");
+        
+        
+        taListaElecciones.setModel(modeloTabla);
+        cargarTiposEleccionesEnCombo();
+        actualizarTabla();       
+    }
+    private void actualizarTabla(){
+        modeloTabla.setRowCount(0); // limpia tabla para no duplicar
+
+        for (int i = 0; i < gestionEleccion.longitud(); i++) {
+            
+            Eleccion obj = gestionEleccion.iesimo(i);
+
+            String[] fila = new String[2];
+            fila[0] = obj.getFecha().toString();
+            fila[1] = obj.getTipoEleccion().toString();
+
+            modeloTabla.addRow(fila);       
+        }
+    }
+    private void cargarTiposEleccionesEnCombo() {
+        
+        jComboBox1.removeAllItems();
+        for (TipoEleccion tipo : TipoEleccion.values()) {
+            jComboBox1.addItem(tipo.toString()); 
+        }
+    }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,27 +67,160 @@ public class Elecciones extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        JtfDia = new javax.swing.JTextField();
+        JtfMes = new javax.swing.JTextField();
+        JtfAño = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taListaElecciones = new javax.swing.JTable();
+        JbtnRegistrar = new javax.swing.JButton();
+        JbtnModificar = new javax.swing.JButton();
+        JbtnEliminar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Gestion de Elecciones");
 
+        jLabel2.setText("Fecha :");
+
+        jLabel3.setText("Tipo Eleccion :");
+
+        jLabel5.setText("dia");
+
+        jLabel6.setText("mes");
+
+        jLabel7.setText("año");
+
+        JtfMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfMesActionPerformed(evt);
+            }
+        });
+
+        taListaElecciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(taListaElecciones);
+
+        JbtnRegistrar.setText("Registrar");
+        JbtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnRegistrarActionPerformed(evt);
+            }
+        });
+
+        JbtnModificar.setText("Modificar");
+        JbtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnModificarActionPerformed(evt);
+            }
+        });
+
+        JbtnEliminar.setText("Eliminar");
+        JbtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnEliminarActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(449, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel5))
+                                            .addComponent(JtfDia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(101, 101, 101)
+                                        .addComponent(jLabel7)))
+                                .addGap(112, 112, 112))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(331, 331, 331)
+                                .addComponent(JbtnEliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(208, 208, 208))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(JbtnRegistrar)
+                            .addGap(194, 194, 194)
+                            .addComponent(JbtnModificar)
+                            .addGap(195, 195, 195)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(JtfMes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(JtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(482, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JtfDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JtfMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JbtnRegistrar)
+                    .addComponent(JbtnModificar))
+                .addGap(18, 18, 18)
+                .addComponent(JbtnEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -63,9 +235,58 @@ public class Elecciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JtfMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfMesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfMesActionPerformed
+
+    private void JbtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JbtnModificarActionPerformed
+
+    private void JbtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnRegistrarActionPerformed
+        // TODO add your handling code here:
+        
+            int dia = Integer.parseInt(JtfDia.getText().trim());
+            int mes = Integer.parseInt(JtfMes.getText().trim());
+            int anio = Integer.parseInt(JtfAño.getText().trim());
+
+            String tipoTexto = (String) jComboBox1.getSelectedItem();            
+
+            TipoEleccion tipo = TipoEleccion.valueOf(tipoTexto); // si tu enum está en MAYÚSCULAS
+            Fecha fecha = new Fecha(dia, mes, anio);
+
+            Eleccion objE = new Eleccion(fecha, tipo);
+            gestionEleccion.agregar(objE);
+
+            JtfDia.setText("");
+            JtfMes.setText("");
+            JtfAño.setText("");
+
+            actualizarTabla();
+        
+    }//GEN-LAST:event_JbtnRegistrarActionPerformed
+
+    private void JbtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JbtnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JbtnEliminar;
+    private javax.swing.JButton JbtnModificar;
+    private javax.swing.JButton JbtnRegistrar;
+    private javax.swing.JTextField JtfAño;
+    private javax.swing.JTextField JtfDia;
+    private javax.swing.JTextField JtfMes;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable taListaElecciones;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,7 @@ import gestion.*;
 public class frmPrincipal extends javax.swing.JFrame {
     private GestionPartido gestorPartido;
     private GestionCandidato gestorCandidato;
+    private GestionEleccion gestorEleccion;
 
     /**
      * Creates new form frmPrincipal
@@ -23,10 +24,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         initComponents();
         gestorPartido = new GestionPartido();
         gestorCandidato = new GestionCandidato();
+        gestorEleccion = new GestionEleccion();
         
         //Esto lo cambio por un panel de login 
         Loginfarm L=new Loginfarm();
-        mostrarPanelogin(L);
+        mostrarPanel(L);
     }
 
     /**
@@ -137,7 +139,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void EleccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EleccionesActionPerformed
         // TODO add your handling code here:
-        Elecciones e = new Elecciones();
+        Elecciones e = new Elecciones(gestorEleccion);
         mostrarPanel(e);
     }//GEN-LAST:event_EleccionesActionPerformed
 
@@ -176,16 +178,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();        
     }
-    public void mostrarPanelogin(JPanel p){
-        
-        p.setSize(950,520);
-        p.setLocation(0, 0);
-        
-        content.removeAll();
-        content.add(p,BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();        
-    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

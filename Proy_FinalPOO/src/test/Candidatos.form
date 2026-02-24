@@ -42,30 +42,43 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="92" pref="92" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="92" pref="92" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="JtfDNI" alignment="0" pref="95" max="32767" attributes="0"/>
+                                          <Component id="JtfNombres" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="JbtnRegistrar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="JbtnModificar" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jComboBox1" pref="121" max="32767" attributes="0"/>
+                                          <Component id="JtfApellidos" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                      <Component id="JbtnRegistrar" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="JtfDNI" alignment="0" pref="95" max="32767" attributes="0"/>
-                              <Component id="JtfNombres" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jComboBox1" pref="121" max="32767" attributes="0"/>
-                              <Component id="JtfApellidos" max="32767" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="JbtnEliminar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="34" max="32767" attributes="0"/>
@@ -102,7 +115,12 @@
                               <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="JbtnRegistrar" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="JbtnRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="JbtnModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="JbtnEliminar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="460" max="-2" attributes="0"/>
                   </Group>
@@ -156,6 +174,9 @@
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="ancestorMoved" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="taListaCandidatosAncestorMoved"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -175,6 +196,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="JtfDNI">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JtfDNIActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="JbtnRegistrar">
           <Properties>
@@ -201,6 +225,22 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="JbtnModificar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modificar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JbtnModificarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JbtnEliminar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Eliminar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JbtnEliminarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

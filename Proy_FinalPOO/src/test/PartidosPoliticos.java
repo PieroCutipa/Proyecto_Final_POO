@@ -44,6 +44,7 @@ public class PartidosPoliticos extends javax.swing.JPanel {
         }
     }
     private void actualizarTabla(){
+        limpiarTabla();
         for (int i = 0; i < gestionPartido.longitud(); i++) {
             PartidoPolitico obj = gestionPartido.iesimo(i);
             String[] fila = new String[4];
@@ -80,6 +81,8 @@ public class PartidosPoliticos extends javax.swing.JPanel {
         JtfLogo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         taListaPartidos = new javax.swing.JTable();
+        JbtnModificar = new javax.swing.JButton();
+        JbtnEliminar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 255));
 
@@ -132,6 +135,20 @@ public class PartidosPoliticos extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(taListaPartidos);
 
+        JbtnModificar.setText("Modificar");
+        JbtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnModificarActionPerformed(evt);
+            }
+        });
+
+        JbtnEliminar.setText("Eliminar");
+        JbtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -141,26 +158,34 @@ public class PartidosPoliticos extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(JtfNombrePartido, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(JlNombrePartido)
+                                        .addComponent(JlLogo))
+                                    .addGap(35, 35, 35))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(JtfLogo)
+                                    .addGap(62, 62, 62)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JtfNombrePartido, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(JlNombrePartido)
-                                    .addComponent(JlLogo))
-                                .addGap(35, 35, 35))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(JtfLogo)
-                                .addGap(62, 62, 62)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JlRepresentanteLegal)
-                            .addComponent(JlSiglas, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                            .addComponent(JtfSiglas, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                            .addComponent(JtfRepresentanteLegal)))
-                    .addComponent(JbtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addComponent(JbtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JbtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(JlRepresentanteLegal)
+                                .addComponent(JlSiglas, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                                .addComponent(JtfSiglas, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                                .addComponent(JtfRepresentanteLegal))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(JbtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
@@ -188,7 +213,11 @@ public class PartidosPoliticos extends javax.swing.JPanel {
                             .addComponent(JtfRepresentanteLegal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JtfLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(45, 45, 45)
-                        .addComponent(JbtnRegistrar))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JbtnRegistrar)
+                            .addComponent(JbtnModificar))
+                        .addGap(32, 32, 32)
+                        .addComponent(JbtnEliminar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -234,8 +263,38 @@ public class PartidosPoliticos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_JtfLogoActionPerformed
 
+    private void JbtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnModificarActionPerformed
+        // TODO add your handling code here:
+        int pos = taListaPartidos.getSelectedRow();
+        PartidoPolitico p = gestionPartido.iesimo(pos);
+        p.setNombrePartido(JtfNombrePartido.getText());
+        p.setSigla(JtfSiglas.getText());
+        p.setLogo(JtfLogo.getText());
+        p.setRepresentanteLegal(JtfRepresentanteLegal.getText());
+
+        actualizarTabla();
+
+        JtfNombrePartido.setText("");
+        JtfLogo.setText("");
+        JtfSiglas.setText("");
+        JtfRepresentanteLegal.setText("");
+        
+    }//GEN-LAST:event_JbtnModificarActionPerformed
+
+    private void JbtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnEliminarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        int pos = taListaPartidos.getSelectedRow();
+        gestionPartido.eliminar(pos);        
+        actualizarTabla();
+        
+    }//GEN-LAST:event_JbtnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JbtnEliminar;
+    private javax.swing.JButton JbtnModificar;
     private javax.swing.JButton JbtnRegistrar;
     private javax.swing.JLabel JlLogo;
     private javax.swing.JLabel JlNombrePartido;

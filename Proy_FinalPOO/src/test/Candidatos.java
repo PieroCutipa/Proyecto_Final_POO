@@ -12,8 +12,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Average
  */
 public class Candidatos extends javax.swing.JPanel {
-    private GestionCandidato gestionCandidato;
-    private GestionPartido gestionPartido;
+    private final GestionCandidato gestionCandidato;
+    private final GestionPartido gestionPartido;
     private DefaultTableModel modeloTabla;
 
     /**
@@ -38,7 +38,14 @@ public class Candidatos extends javax.swing.JPanel {
         cargarPartidosEnCombo();
         actualizarTabla();
     }
+    private void limpiarTabla(){
+        for (int i = modeloTabla.getRowCount()-1; i >= 0 ; i--) {
+            modeloTabla.removeRow(i);
+            
+        }
+    }
     private void actualizarTabla(){
+        limpiarTabla();
         for (int i = 0; i < gestionCandidato.longitud(); i++) {
             Candidato obj = gestionCandidato.iesimo(i);
             String[] fila = new String[4];
@@ -53,7 +60,8 @@ public class Candidatos extends javax.swing.JPanel {
         jComboBox1.removeAllItems(); 
         for (int i = 0; i < gestionPartido.longitud(); i++) {
             PartidoPolitico partido = gestionPartido.iesimo(i);
-            jComboBox1.addItem(partido.getNombrePartido()); // agrega el objeto completo
+            // agrega el objeto completo
+            jComboBox1.addItem(partido.getNombrePartido()); 
         
         }    
     }
@@ -80,6 +88,8 @@ public class Candidatos extends javax.swing.JPanel {
         JtfDNI = new javax.swing.JTextField();
         JbtnRegistrar = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        JbtnModificar = new javax.swing.JButton();
+        JbtnEliminar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 153));
 
@@ -103,6 +113,15 @@ public class Candidatos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        taListaCandidatos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                taListaCandidatosAncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(taListaCandidatos);
 
         jLabel5.setText("Partido Politico :");
@@ -116,6 +135,12 @@ public class Candidatos extends javax.swing.JPanel {
         JtfApellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JtfApellidosActionPerformed(evt);
+            }
+        });
+
+        JtfDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfDNIActionPerformed(evt);
             }
         });
 
@@ -133,6 +158,20 @@ public class Candidatos extends javax.swing.JPanel {
             }
         });
 
+        JbtnModificar.setText("Modificar");
+        JbtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnModificarActionPerformed(evt);
+            }
+        });
+
+        JbtnEliminar.setText("Eliminar");
+        JbtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,25 +181,33 @@ public class Candidatos extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(92, 92, 92)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)))
-                    .addComponent(JbtnRegistrar)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(92, 92, 92)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(JtfDNI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                        .addComponent(JtfNombres, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(JbtnRegistrar))
+                                .addGap(51, 51, 51)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JbtnModificar)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jComboBox1, 0, 121, Short.MAX_VALUE)
+                                        .addComponent(JtfApellidos))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(JtfDNI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                            .addComponent(JtfNombres, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, 121, Short.MAX_VALUE)
-                            .addComponent(JtfApellidos))))
+                        .addGap(101, 101, 101)
+                        .addComponent(JbtnEliminar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -189,7 +236,11 @@ public class Candidatos extends javax.swing.JPanel {
                             .addComponent(JtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
-                        .addComponent(JbtnRegistrar))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JbtnRegistrar)
+                            .addComponent(JbtnModificar))
+                        .addGap(29, 29, 29)
+                        .addComponent(JbtnEliminar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -235,8 +286,41 @@ public class Candidatos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void JbtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnModificarActionPerformed
+        // TODO add your handling code here:
+        int pos = taListaCandidatos.getSelectedRow();
+        Candidato c = gestionCandidato.iesimo(pos);
+        c.setNombres(JtfNombres.getText());
+        c.setApellidos(JtfApellidos.getText());
+        c.setDni(JtfDNI.getText());
+        c.setPartidopolitico((String) jComboBox1.getSelectedItem());
+
+        JtfNombres.setText("");
+        JtfApellidos.setText("");
+        JtfDNI.setText("");
+ 
+        actualizarTabla();
+    }//GEN-LAST:event_JbtnModificarActionPerformed
+
+    private void JbtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnEliminarActionPerformed
+        // TODO add your handling code here:
+        int pos = taListaCandidatos.getSelectedRow();
+        gestionCandidato.eliminar(pos);        
+        actualizarTabla();     
+    }//GEN-LAST:event_JbtnEliminarActionPerformed
+
+    private void JtfDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JtfDNIActionPerformed
+
+    private void taListaCandidatosAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_taListaCandidatosAncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taListaCandidatosAncestorMoved
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JbtnEliminar;
+    private javax.swing.JButton JbtnModificar;
     private javax.swing.JButton JbtnRegistrar;
     private javax.swing.JTextField JtfApellidos;
     private javax.swing.JTextField JtfDNI;

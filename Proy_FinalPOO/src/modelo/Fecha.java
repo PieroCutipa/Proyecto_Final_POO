@@ -75,5 +75,11 @@ public class Fecha {
         }else{
             return false;
         }
-    }        
+    }
+
+    @Override
+    public String toString() {
+        return  dia + "/" + mes + "/" + anio ;
+    }
+    
 }
