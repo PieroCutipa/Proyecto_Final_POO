@@ -31,7 +31,7 @@ public class ReportedeCandidato extends javax.swing.JPanel {
 
         for (int i = 0; i < gestionCandidato.longitud(); i++) {
             Candidato c = gestionCandidato.iesimo(i);
-            Object[] fila = new Object[2];
+            Object[] fila = new Object[5];
             fila[0] = c.getNombres() + " " + c.getApellidos();
             fila[1] = c.getPartidopolitico();
             modeloTabla.addRow(fila);
