@@ -9,10 +9,10 @@ package modelo;
  * @author Average
  */
 public class Persona {
-    //Atributos-------------
+    
     private String nombres;
     private String apellidos;
-    //Constructores
+    
 
     public Persona() {
         nombres= "" ;

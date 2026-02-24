@@ -5,7 +5,7 @@
 package test;
 
 import gestion.Autenticacion;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 public class Loginfarm extends javax.swing.JPanel {
 
     private Autenticacion auth;

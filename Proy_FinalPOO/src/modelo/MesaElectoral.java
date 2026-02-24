@@ -51,6 +51,14 @@ public class MesaElectoral {
         this.contador = contador;
     }
 
+    public void setVotosNulos(int votosNulos) {
+        this.votosNulos = votosNulos;
+    }
+
+    public void setVotosBlanco(int votosBlanco) {
+        this.votosBlanco = votosBlanco;
+    }
+    
     public Candidato[] getCandidatos() {
         return candidatos;
     }
@@ -76,13 +84,17 @@ public class MesaElectoral {
         }
         System.out.println("Candidato no encontrado");
     }
-
+    
     public int getTotalVotosEmitidos() {
-
+        // Empezamos con los votos manuales
         int total = votosNulos + votosBlanco;
 
+        // Sumamos los votos de los candidatos que existen en el arreglo
         for (int i = 0; i < contadorCandidatos; i++) {
-            total = total + candidatos[i].getVotos();
+            // IMPORTANTE: Asegúrate que candidatos[i] no sea null
+            if (candidatos[i] != null) {
+                total = total + candidatos[i].getVotos();
+            }
         }
         return total;
     }
@@ -102,9 +114,17 @@ public class MesaElectoral {
             contadorCandidatos++;
         } else {
             System.out.println("No se pueden agregar más candidatos");
-}
     }
-
+        }
+    
+    public int getTotalVotosPreferenciales() {
+        int suma = 0;
+        for (int i = 0; i < contadorCandidatos; i++) {
+            // Suponiendo que tu clase Candidato tiene getVotosPreferenciales
+            suma = suma + candidatos[i].getVotosPreferenciales();
+        }
+        return suma;
+    }
     public void registrarVoto(String dni) {
     
         for (int i = 0; i < contadorCandidatos; i++) {
@@ -125,4 +145,6 @@ public class MesaElectoral {
     public void registrarVotoBlanco() {
         votosBlanco++;
     }
+
+    
 }
