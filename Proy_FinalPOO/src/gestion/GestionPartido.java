@@ -9,7 +9,7 @@ import modelo.PartidoPolitico;
  * @author Average
  */
 public class GestionPartido {
-    private PartidoPolitico[] partidospoliticos;
+    private final PartidoPolitico[] partidospoliticos;
     private int nro ;
     private final static int MAX=36;
     public GestionPartido() {
