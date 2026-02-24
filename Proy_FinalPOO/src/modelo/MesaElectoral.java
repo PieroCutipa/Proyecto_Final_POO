@@ -86,11 +86,15 @@ public class MesaElectoral {
     }
     
     public int getTotalVotosEmitidos() {
-
+        // Empezamos con los votos manuales
         int total = votosNulos + votosBlanco;
 
+        // Sumamos los votos de los candidatos que existen en el arreglo
         for (int i = 0; i < contadorCandidatos; i++) {
-            total = total + candidatos[i].getVotos();
+            // IMPORTANTE: Asegúrate que candidatos[i] no sea null
+            if (candidatos[i] != null) {
+                total = total + candidatos[i].getVotos();
+            }
         }
         return total;
     }

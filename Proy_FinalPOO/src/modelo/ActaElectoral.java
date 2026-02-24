@@ -14,7 +14,8 @@ public class ActaElectoral {
     private String observaciones;
     private String nroActaUnico;
     
-   
+    public ActaElectoral() {
+    }
     public ActaElectoral(String titulo,Fecha fecha,double hora,String lugar,String selloOficial,String observaciones,String nroActaUnico) {
         this.titulo = titulo;
         this.fecha = fecha;
