@@ -13,13 +13,12 @@ public class Operador {
     private String contraseña;
     
 
-    // Constructor
-    public Operador(String usuario, String contraseña) {
+        public Operador(String usuario, String contraseña) {
         this.usuario = usuario;
         this.contraseña = contraseña;
     }
 
-    // Getters
+    
     public String getUsuario() {
         return usuario;
     }

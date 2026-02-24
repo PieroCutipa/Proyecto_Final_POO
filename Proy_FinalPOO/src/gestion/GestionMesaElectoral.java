@@ -19,14 +19,11 @@ public class GestionMesaElectoral {
         contadorMesas = 0;
     }
     
-    //Constructores 
-
+    
     public GestionMesaElectoral(MesaElectoral[] mesas, int contadorMesas) {
         this.mesas = mesas;
         this.contadorMesas = contadorMesas;
     }
-
-    
     
     public void agregarMesa(MesaElectoral nuevaMesa) {
         if (contadorMesas < MAX) {
