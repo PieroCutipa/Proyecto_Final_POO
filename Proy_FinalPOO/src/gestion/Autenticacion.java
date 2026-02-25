@@ -8,7 +8,7 @@ package gestion;
 import modelo.Operador;
 
 public class Autenticacion {
-
+    
     private Operador operador; 
 
     public Autenticacion() {
@@ -18,11 +18,10 @@ public class Autenticacion {
 
     public boolean login(String usuario, String contraseña) {
         
-        if (operador.getUsuario().equals(usuario) &&
-            operador.getContraseña().equals(contraseña)) {
-            return true;
-        }
-        return false;
+        return operador.getUsuario().equals(usuario) &&
+                operador.getContraseña().equals(contraseña);
+        
     }
+
 
 }

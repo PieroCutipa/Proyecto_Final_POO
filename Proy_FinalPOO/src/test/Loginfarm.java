@@ -6,13 +6,20 @@ package test;
 
 import gestion.Autenticacion;
 import javax.swing.*;
+
 public class Loginfarm extends javax.swing.JPanel {
 
     private Autenticacion auth;
+    
     public Loginfarm() {
         initComponents();
         auth = new Autenticacion();
     }
+    public Loginfarm(Autenticacion auth) {
+        initComponents();
+        this.auth =auth;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

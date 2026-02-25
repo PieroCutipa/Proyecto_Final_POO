@@ -7,15 +7,16 @@ package modelo;
 
 
 
+
 public class Operador {
 
     private String usuario;
     private String contraseña;
     
 
-        public Operador(String usuario, String contraseña) {
-        this.usuario = usuario;
-        this.contraseña = contraseña;
+    public Operador(String usuario, String contraseña) {
+    this.usuario = usuario;
+    this.contraseña = contraseña;
     }
 
     
