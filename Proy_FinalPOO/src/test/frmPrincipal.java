@@ -7,6 +7,7 @@ package test;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import gestion.*;
+import modelo.*;
 
 /**
  *
@@ -16,6 +17,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private GestionPartido gestorPartido;
     private GestionCandidato gestorCandidato;
     private GestionEleccion gestorEleccion;
+    private MesaElectoral mesas;
 
     /**
      * Creates new form frmPrincipal

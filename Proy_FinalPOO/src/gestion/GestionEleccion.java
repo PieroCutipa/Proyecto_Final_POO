@@ -4,7 +4,7 @@
  */
 package gestion;
 
-import modelo.Eleccion;
+import modelo.*;
 
 /**
  *
